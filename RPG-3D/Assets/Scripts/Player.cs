@@ -41,8 +41,9 @@ public class Player : MonoBehaviour {
 
                 if (pmpSpawned)
                 {
-                    PMP = null;
-                    PMP = Instantiate(PlayerMovePoint.transform, mouseClickPosition, Quaternion.identity);
+                    //PMP = null;
+                    PMP.transform.position = mouseClickPosition;
+                   // PMP = Instantiate(PlayerMovePoint.transform, mouseClickPosition, Quaternion.identity);
                 }
                 else
                 {
@@ -76,7 +77,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-
+/*
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "PMP")
@@ -85,5 +86,5 @@ public class Player : MonoBehaviour {
             triggeringPMP.GetComponent<PMP>().DestroyPMP();
         }
     }
-
+*/
 }
