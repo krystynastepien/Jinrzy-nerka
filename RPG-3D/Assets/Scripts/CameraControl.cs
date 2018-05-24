@@ -23,11 +23,13 @@ public class CameraControl : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
+        // Input.GetMouseButton(0) - registers every frame the mouse is down, 
+        // Input.GetMouseButtonDown(0) - only registers on the first frame the user clicks.
+        if (Input.GetMouseButton(1)) // obracaj kamere gdy wciśnięty prawy przycisk myszki
+        {
             currentX += Input.GetAxis("Mouse X");
             currentY += Input.GetAxis("Mouse Y");
-        //}
+        }
        
             currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
         
