@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3254ce1a4c6cb2f4db6cd0a0a42de456
-timeCreated: 1528128219
+timeCreated: 1527584200
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,11 +13,6 @@ ModelImporter:
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_001
-    second: {fileID: 2100000, guid: e9a2d043986c85840b6e5bafd0c570c7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
