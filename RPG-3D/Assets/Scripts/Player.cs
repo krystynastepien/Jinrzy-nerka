@@ -7,23 +7,28 @@ public class Player : MonoBehaviour {
     // Variables
     public float movementSpeed = 1;
     private float hitDistance = 0.0f;  //y, czyli zawsze bd na ziemi bo tam jest teren
-    private bool moving;
+    public bool moving;
     public GameObject PlayerMovePoint;
     private Transform PMP;
     private bool pmpSpawned;
     private GameObject triggeringPMP;
+
+ 
 
 
 
 
     // Use this for initialization
     void Start () {
-		
+
+   
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+
+       
         //player movement
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         //Terrain playerTerrain = new Terrain();
@@ -38,16 +43,19 @@ public class Player : MonoBehaviour {
             if (Input.GetMouseButtonDown(0))
             {
                 moving = true;
-
-                if (pmpSpawned)
+            
+                if (!pmpSpawned)
                 {
+
+                    PMP = Instantiate(PlayerMovePoint.transform, mouseClickPosition, Quaternion.identity);
                     //PMP = null;
-                    PMP.transform.position = mouseClickPosition;
+                    
                    // PMP = Instantiate(PlayerMovePoint.transform, mouseClickPosition, Quaternion.identity);
                 }
                 else
                 {
-                    PMP = Instantiate(PlayerMovePoint.transform, mouseClickPosition, Quaternion.identity);
+                    //PMP = Instantiate(PlayerMovePoint.transform, mouseClickPosition, Quaternion.identity);
+                    PMP.transform.position = mouseClickPosition;
                 }
                 // print(mouseClickPosition);
             }
@@ -74,6 +82,11 @@ public class Player : MonoBehaviour {
         {
             transform.position = Vector3.MoveTowards(transform.position, PMP.transform.position, movementSpeed);
             this.transform.LookAt(PMP.transform);
+            if (transform.position == PMP.transform.position)
+            {
+                moving = false;
+            }
+          
         }
     }
 

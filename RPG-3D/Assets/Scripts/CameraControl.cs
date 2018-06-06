@@ -9,7 +9,7 @@ public class CameraControl : MonoBehaviour
 
     public Transform lookAt;
     private Transform camTransform;
-    private float distance = 70.0f;
+    public float distance = 100.0f;
 
     private float currentX = 0.0f;
     private float currentY = 45.0f;
