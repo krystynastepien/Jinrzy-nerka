@@ -9,19 +9,21 @@ public class AsaokaAnimController : MonoBehaviour {
     static Animator anim;
 
     private PlayerScript playerScr;
+    private WSAD8dir WSADscr;
 
 
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
         playerScr = chara.GetComponent<PlayerScript>();
-     
+        WSADscr = chara.GetComponent<WSAD8dir>();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
        
-        if(playerScr.moving == true) // jesli sie ruszamy po horizontal albo vertical
+        if(playerScr.moving == true || WSADscr.moving2 == true) // jesli sie ruszamy po horizontal albo vertical
         {
             anim.SetBool("IsMoving", true);
         }
