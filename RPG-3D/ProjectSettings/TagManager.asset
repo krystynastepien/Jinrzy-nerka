@@ -6,6 +6,7 @@ TagManager:
   tags:
   - pmp
   - PMP
+  - Enemy
   layers:
   - Default
   - TransparentFX
