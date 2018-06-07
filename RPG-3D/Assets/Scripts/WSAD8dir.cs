@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WSAD8dir : MonoBehaviour {
 
+    public GameObject chara;
+    private SlopesScript SlopeScr;
+
     public float velocity = 60;
     public float turnSpeed = 10;
 
@@ -21,6 +24,7 @@ public class WSAD8dir : MonoBehaviour {
 	void Start () {
         cam = Camera.main.transform;
         lastPos = transform.position;
+        SlopeScr = chara.GetComponent<SlopesScript>();
     }
 	
 	// Update is called once per frame
@@ -68,8 +72,9 @@ public class WSAD8dir : MonoBehaviour {
 
     void Move()
     {
-        
-        transform.position += transform.forward * velocity * Time.deltaTime;
+        if (SlopeScr.groundAngle >= SlopeScr.maxGroundAngle) return;   //nie rusza sie
+         // transform.position += transform.forward * velocity * Time.deltaTime;
+        transform.position += SlopeScr.forward * velocity * Time.deltaTime;
     }
 
 }

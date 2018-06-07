@@ -13,14 +13,15 @@ public class PlayerScript : MonoBehaviour {
     private bool pmpSpawned;
     private GameObject triggeringPMP;
 
- 
 
+    public GameObject chara;
+    private SlopesScript SlopeScr;
 
 
 
     // Use this for initialization
     void Start () {
-
+        SlopeScr = chara.GetComponent<SlopesScript>();
    
 	}
 	
@@ -80,24 +81,14 @@ public class PlayerScript : MonoBehaviour {
     {
         if (PMP)
         {
-            transform.position = Vector3.MoveTowards(transform.position, PMP.transform.position, movementSpeed);
+            if (SlopeScr.groundAngle >= SlopeScr.maxGroundAngle) return;   //nie rusza sie
+            transform.position = Vector3.MoveTowards(transform.position + SlopeScr.transform.forward * Time.deltaTime , PMP.transform.position, movementSpeed);
+       
             this.transform.LookAt(PMP.transform);
             if (transform.position == PMP.transform.position)
             {
                 moving = false;
             }
-          
         }
     }
-
-/*
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "PMP")
-        {
-            triggeringPMP = other.gameObject;
-            triggeringPMP.GetComponent<PMP>().DestroyPMP();
-        }
-    }
-*/
 }
