@@ -72,8 +72,8 @@ public class WSAD8dir : MonoBehaviour {
 
     void Move()
     {
-        if (SlopeScr.groundAngle >= SlopeScr.maxGroundAngle) return;   //nie rusza sie
-         // transform.position += transform.forward * velocity * Time.deltaTime;
+        if (SlopeScr.groundAngle >= SlopeScr.maxGroundAngle) return;
+                                                                     // transform.position += transform.forward * velocity * Time.deltaTime;
         transform.position += SlopeScr.forward * velocity * Time.deltaTime;
     }
 

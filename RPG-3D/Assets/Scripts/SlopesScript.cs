@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlopesScript : MonoBehaviour {
 
     public float hight;
-    public float hightPadding = 0.02f;
+    public float hightPadding = 0.2f;
     public LayerMask ground;
     public float maxGroundAngle = 120;
     public bool debug;
@@ -23,7 +23,7 @@ public class SlopesScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         CalculateForward();
         CalculateGroundAngle();
         CheckGround();
@@ -60,7 +60,7 @@ public class SlopesScript : MonoBehaviour {
         {
             if(Vector3.Distance(transform.position, hitinfo.point) < hight)
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.up * hight, 5 * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.up * hight, 9 * Time.deltaTime);
             }
             grounded = true;
         }
@@ -74,7 +74,7 @@ public class SlopesScript : MonoBehaviour {
     {
         if (!grounded)
         {
-            transform.position += Physics.gravity * Time.deltaTime ;
+            transform.position += Physics.gravity * Time.deltaTime * 3;
         }
     }
 
@@ -82,7 +82,7 @@ public class SlopesScript : MonoBehaviour {
     {
         if (!debug) return;
 
-        Debug.DrawLine(transform.position, transform.position + forward * 2 * hight);
+        Debug.DrawLine(transform.position, transform.position + forward * 3 * hight);
         Debug.DrawLine(transform.position, transform.position - Vector3.up * hight, Color.green);
     }
 }
