@@ -7,8 +7,8 @@ public class WSAD8dir : MonoBehaviour {
     public GameObject chara;
     private SlopesScript SlopeScr;
 
-    public float velocity = 60;
-    public float turnSpeed = 10;
+    public float velocity = 10;
+    public float turnSpeed = 20;
 
     public bool moving2;
     public Vector3 lastPos;

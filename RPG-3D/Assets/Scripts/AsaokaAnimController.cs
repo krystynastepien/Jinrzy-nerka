@@ -23,7 +23,7 @@ public class AsaokaAnimController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
        
-        if(playerScr.moving == true || WSADscr.moving2 == true) // jesli sie ruszamy po horizontal albo vertical
+        if( WSADscr.moving2 == true) // jesli sie ruszamy po horizontal albo vertical  // playerScr.moving == true 
         {
             anim.SetBool("IsMoving", true);
         }
