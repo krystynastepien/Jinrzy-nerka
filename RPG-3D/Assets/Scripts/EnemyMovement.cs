@@ -5,19 +5,25 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour {
 
-    Transform player;               // Reference to the player's position.
-    //PlayerHealth playerHealth;      // Reference to the player's health.
+    Transform player;
+    StatsScript StatsScr;
+    // Reference to the player's position.
    // EnemyHealth enemyHealth;        // Reference to this enemy's health.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
+    public Vector3 distance;
 
+    public Vector3 start_enemy_position;
 
     void Awake()
     {
         // Set up the references.
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        //playerHealth = player.GetComponent<PlayerHealth>();
+        StatsScr = player.GetComponent<StatsScript>();
         //enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent<NavMeshAgent>();
+
+        start_enemy_position = this.transform.position;
+        
     }
 
 
@@ -29,16 +35,34 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // If the enemy and the player have health left...
-       // if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
-        //{
-            // ... set the destination of the nav mesh agent to the player.
-            nav.SetDestination(player.position);
-        //}
+        // if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+
+        distance.x = player.transform.position.x - this.transform.position.x;
+        distance.x = Mathf.Abs(distance.x);
+
+        distance.z = player.transform.position.z - this.transform.position.z;
+        distance.z = Mathf.Abs(distance.z);
+
+
+        if ( StatsScr.health > 0)
+            {
+            if (distance.x <= 20 || distance.z <=20)
+            {
+                // ... set the destination of the nav mesh agent to the player.
+                nav.SetDestination(player.position);
+            }
+            else if (distance.x > 20 || distance.z > 20)
+            {
+                // ... disable the nav mesh agent.
+                nav.SetDestination(start_enemy_position);
+            }
+
+        }
         // Otherwise...
-       // else
-       // {
+        else
+        {
             // ... disable the nav mesh agent.
-        //    nav.enabled = false;
-       // }
+            nav.enabled = false;
+        }
     }
 }
