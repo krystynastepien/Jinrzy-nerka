@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CubeDamage : MonoBehaviour {
 
@@ -13,14 +14,17 @@ public class CubeDamage : MonoBehaviour {
     public GameObject player;
     private Collider PlayerCol;
 
+    NavMeshAgent nav;
 
     private void OnCollisionStay(Collision collision)
     {
         
         if (collision.gameObject.tag=="Player")
         {
+          
             (PlayerStats.health) -= damage * seconds/120 ;
         }
+
     }
 
 
