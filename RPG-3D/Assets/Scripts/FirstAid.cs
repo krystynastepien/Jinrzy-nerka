@@ -2,23 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstAid : MonoBehaviour {
+public class FirstAid : MonoBehaviour, IInventoryItem {
+
+    public string Name
+    {
+        get { return "FirstAidKit"; }
+    }
+
+    public Sprite _Image = null;
+
+    public Sprite Image
+    {
+        get { return _Image; }
+    }
+
+    public void OnPickup()
+    {
+        Debug.Log("Kit picked and deactivated");
+        gameObject.SetActive(false);
+    }
+
+    
 
     public float aid = 20;
-
     private StatsScript PlayerStats;
     public GameObject player;
     private Collider PlayerCol;
-    // Use this for initialization
-    void Start () {
-        PlayerStats = player.GetComponent<StatsScript>();
-        PlayerCol = player.GetComponent<Collider>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     private void OnCollisionEnter(Collision other)
     {
@@ -32,10 +42,15 @@ public class FirstAid : MonoBehaviour {
                     PlayerStats.health = 1000;
                 }
             }
-
-            DestroyObject(this.gameObject);
+           // DestroyObject(this.gameObject);
         }
-        
-     
     }
+
+
+    void Start()
+    {
+        PlayerStats = player.GetComponent<StatsScript>();
+        PlayerCol = player.GetComponent<Collider>();
+    }
+    
 }

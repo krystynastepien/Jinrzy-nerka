@@ -20,8 +20,12 @@ public class WSAD8dir : MonoBehaviour {
     Transform cam;
 
 
-	// Use this for initialization
-	void Start () {
+
+    public Inventory inventory;
+
+
+    // Use this for initialization
+    void Start () {
         cam = Camera.main.transform;
         lastPos = transform.position;
         SlopeScr = chara.GetComponent<SlopesScript>();
@@ -75,6 +79,17 @@ public class WSAD8dir : MonoBehaviour {
         if (SlopeScr.groundAngle >= SlopeScr.maxGroundAngle) return;
                                                                      // transform.position += transform.forward * velocity * Time.deltaTime;
         transform.position += SlopeScr.forward * velocity * Time.deltaTime;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        IInventoryItem item = collision.collider.GetComponent<IInventoryItem>();
+        if (item != null)
+        {
+            inventory.AddItem(item);
+            Debug.Log("hit collider");
+        }
     }
 
 }
