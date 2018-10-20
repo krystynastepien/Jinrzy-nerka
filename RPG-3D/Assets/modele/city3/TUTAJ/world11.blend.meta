@@ -198,6 +198,40 @@ ModelImporter:
     4300062: Buildings
     4300064: Roads
     4300066: busstops
+    6400000: Buildings
+    6400002: busstops
+    6400004: Car1
+    6400006: Car10
+    6400008: Car11
+    6400010: Car12
+    6400012: Car2
+    6400014: Car3
+    6400016: Car4
+    6400018: Car5
+    6400020: Car6
+    6400022: Car7
+    6400024: Car8
+    6400026: Car9
+    6400028: door
+    6400030: Pines
+    6400032: Roads
+    6400034: Rubble1
+    6400036: Rubble10
+    6400038: Rubble11
+    6400040: Rubble12
+    6400042: Rubble13
+    6400044: Rubble14
+    6400046: Rubble15
+    6400048: Rubble16
+    6400050: Rubble2
+    6400052: Rubble3
+    6400054: Rubble4
+    6400056: Rubble5
+    6400058: Rubble6
+    6400060: Rubble7
+    6400062: Rubble8
+    6400064: Rubble9
+    6400066: Trees
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
@@ -233,7 +267,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -272,7 +306,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
