@@ -31,5 +31,6 @@ public class AsaokaAnimController : MonoBehaviour {
         {
             anim.SetBool("IsMoving", false);
         }
+
     }
 }

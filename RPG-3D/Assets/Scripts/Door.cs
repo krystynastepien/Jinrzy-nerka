@@ -10,6 +10,7 @@ public class Door : MonoBehaviour {
     private GameObject chara;
     private bool touched;
     private string drzwi_name;
+    RaycastHit rhInfo;
 
 
     // Use this for initialization
@@ -26,12 +27,25 @@ public class Door : MonoBehaviour {
         {
             if (touched)
             {
-                if(drzwi_name == "drzwi_test1")
+                if(drzwi_name == "drzwi_test1" && rhInfo.collider.name == "drzwi_test1")
                 {
+                    
                     SceneManager.LoadSceneAsync("scene7room");
                 }
             }
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray toMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+            
+            bool didHit = Physics.Raycast(toMouse, out rhInfo, 500.0f);
+            if (didHit)
+            {
+                Debug.Log("klikenieto na"+rhInfo.collider.name);
+            }
+        }
+
 
     }
 

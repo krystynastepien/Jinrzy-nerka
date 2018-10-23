@@ -20,7 +20,8 @@ public class WSAD8dir : MonoBehaviour {
     Quaternion targetRotation;
     Transform cam;
 
- 
+    static Animator anim;
+
     public Inventory inventory;
 
 
@@ -29,6 +30,7 @@ public class WSAD8dir : MonoBehaviour {
         cam = Camera.main.transform;
         lastPos = transform.position;
         SlopeScr = chara.GetComponent<SlopesScript>();
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -41,11 +43,23 @@ public class WSAD8dir : MonoBehaviour {
         CalculateDirection();
         Rotate();
         Move();
-        if (lastPos != transform.position)
+        if (Round(lastPos) != Round(transform.position))
         {
             moving2 = true;
         }
         lastPos = transform.position;
+        // Debug.Log(Round(lastPos)+"   "+ Round(transform.position));
+       //  Debug.Log("ismoving name to " + anim.GetParameter(0).name);
+
+        if (moving2 == true) // jesli sie ruszamy po horizontal albo vertical  // playerScr.moving == true 
+        {
+            anim.SetBool("IsMoving", true);
+        }
+        if(moving2 != true)
+        {
+            anim.SetBool("IsMoving", false);
+        }
+
     }
 
 
@@ -94,5 +108,23 @@ public class WSAD8dir : MonoBehaviour {
             Debug.Log("hit collider");
         }
     }
+
+
+    //obciecie wektora v3
+    public Vector3 Round(Vector3 vector3, int decimalPlaces = 1)
+    {
+        float multiplier = 1;
+        for (int i = 0; i < decimalPlaces; i++)
+        {
+            multiplier *= 10f;
+        }
+        return new Vector3(
+            Mathf.Round(vector3.x * multiplier) / multiplier,
+            Mathf.Round(vector3.y * multiplier) / multiplier,
+            Mathf.Round(vector3.z * multiplier) / multiplier);
+    }
+
+
+
 
 }
