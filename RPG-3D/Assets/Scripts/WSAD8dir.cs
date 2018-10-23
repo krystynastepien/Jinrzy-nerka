@@ -5,6 +5,7 @@ using UnityEngine;
 public class WSAD8dir : MonoBehaviour {
 
     public GameObject chara;
+    private GameObject enemy;
     private SlopesScript SlopeScr;
 
     public float velocity = 10;
@@ -19,8 +20,7 @@ public class WSAD8dir : MonoBehaviour {
     Quaternion targetRotation;
     Transform cam;
 
-
-
+ 
     public Inventory inventory;
 
 
@@ -72,7 +72,10 @@ public class WSAD8dir : MonoBehaviour {
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed*Time.deltaTime);
     }
 
-
+    void RotateToClickedEnemy()
+    {
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+    }
 
     void Move()
     {

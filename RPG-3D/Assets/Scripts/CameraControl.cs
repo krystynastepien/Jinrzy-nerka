@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    private const float Y_ANGLE_MIN = 0.0f;
-    private const float Y_ANGLE_MAX = 50.0f;
+    private const float Y_ANGLE_MIN = 10.0f;    // minimalne nachylenie do podlogi
+    private const float Y_ANGLE_MAX = 80.0f;    // maksymalne nachylenie do podlogi
 
     public Transform lookAt;
     private Transform camTransform;
@@ -13,8 +13,8 @@ public class CameraControl : MonoBehaviour
 
     private float currentX = 0.0f;
     private float currentY = 45.0f;
-    private float sensitivityX = 4.0f;
-    private float sensitivityY = 1.0f;
+    private float sensitivityX = 8.0f;
+    private float sensitivityY = 6.0f;
 
     private void Start()
     {
@@ -30,8 +30,20 @@ public class CameraControl : MonoBehaviour
             currentX += Input.GetAxis("Mouse X");
             currentY += Input.GetAxis("Mouse Y");
         }
-       
-            currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
+
+        //scroll
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            //GetComponent<Camera>().fieldOfView = GetComponent<Camera>().fieldOfView - 2;
+            distance--;
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            //GetComponent<Camera>().fieldOfView = GetComponent<Camera>().fieldOfView + 2;
+            distance++;
+        }
+
+        currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
         
     }
 
