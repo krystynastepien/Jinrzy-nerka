@@ -8,6 +8,7 @@ TagManager:
   - PMP
   - Enemy
   - Door
+  - Inventory
   layers:
   - Default
   - TransparentFX

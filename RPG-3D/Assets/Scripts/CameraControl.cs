@@ -16,8 +16,11 @@ public class CameraControl : MonoBehaviour
     private float sensitivityX = 8.0f;
     private float sensitivityY = 6.0f;
 
+
+
     private void Start()
     {
+        lookAt = GameObject.FindGameObjectWithTag("Player").transform;
         camTransform = transform;
     }
 

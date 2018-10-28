@@ -49,6 +49,7 @@ public class FirstAid : MonoBehaviour, IInventoryItem {
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         PlayerStats = player.GetComponent<StatsScript>();
         PlayerCol = player.GetComponent<Collider>();
     }

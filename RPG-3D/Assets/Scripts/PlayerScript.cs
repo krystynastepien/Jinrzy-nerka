@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        chara = GameObject.FindGameObjectWithTag("Player");
         SlopeScr = chara.GetComponent<SlopesScript>();
    
 	}

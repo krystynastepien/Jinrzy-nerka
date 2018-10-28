@@ -1,7 +1,4 @@
 sceneSetups:
-- path: Assets/scene7room.unity
+- path: Assets/scene8_CharacterSelectionMenu.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/scene6city.unity
-  isLoaded: 0
-  isActive: 0

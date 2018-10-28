@@ -27,6 +27,7 @@ public class WSAD8dir : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        chara = GameObject.FindGameObjectWithTag("Player");
         cam = Camera.main.transform;
         lastPos = transform.position;
         SlopeScr = chara.GetComponent<SlopesScript>();
@@ -35,30 +36,40 @@ public class WSAD8dir : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetInput();
         moving2 = false;
+        /*if (Round(lastPos) != Round(transform.position))
+        {
+            moving2 = true;
+        }
+        else
+        {
+            moving2 = false;
+        }
+        */
+        GetInput();
 
         if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
 
         CalculateDirection();
         Rotate();
         Move();
-        if (Round(lastPos) != Round(transform.position))
+    
+        lastPos = transform.position;
+        // Debug.Log(Round(lastPos)+"   "+ Round(transform.position));
+        //  Debug.Log("ismoving name to " + anim.GetParameter(0).name);
+
+        //animacja na wcisniecie klawiszy
+        if ((Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.S)))
         {
             moving2 = true;
         }
-        lastPos = transform.position;
-        // Debug.Log(Round(lastPos)+"   "+ Round(transform.position));
-       //  Debug.Log("ismoving name to " + anim.GetParameter(0).name);
+        else
+        {
+            moving2 = false;
+        }
+        
 
-        if (moving2 == true) // jesli sie ruszamy po horizontal albo vertical  // playerScr.moving == true 
-        {
-            anim.SetBool("IsMoving", true);
-        }
-        if(moving2 != true)
-        {
-            anim.SetBool("IsMoving", false);
-        }
+
 
     }
 
@@ -69,7 +80,7 @@ public class WSAD8dir : MonoBehaviour {
     {
         input.x = Input.GetAxisRaw("Horizontal");  //a d
         input.y = Input.GetAxisRaw("Vertical");  // w s
-    }
+      }
 
     void CalculateDirection()
     {

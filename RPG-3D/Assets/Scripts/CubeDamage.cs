@@ -30,6 +30,7 @@ public class CubeDamage : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
         PlayerStats = player.GetComponent<StatsScript>();
         PlayerCol = player.GetComponent<Collider>();
        

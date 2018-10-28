@@ -5,6 +5,7 @@ using UnityEngine;
 public class AsaokaAnimController : MonoBehaviour {
 
     public GameObject chara;
+    //public GameObject chara;
 
     static Animator anim;
 
@@ -14,6 +15,7 @@ public class AsaokaAnimController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        chara = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         playerScr = chara.GetComponent<PlayerScript>();
         WSADscr = chara.GetComponent<WSAD8dir>();
