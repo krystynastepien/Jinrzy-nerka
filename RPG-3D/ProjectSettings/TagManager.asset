@@ -9,6 +9,10 @@ TagManager:
   - Enemy
   - Door
   - Inventory
+  - ButtonA
+  - ButtonH
+  - Follower
+  - ButtonStart
   layers:
   - Default
   - TransparentFX

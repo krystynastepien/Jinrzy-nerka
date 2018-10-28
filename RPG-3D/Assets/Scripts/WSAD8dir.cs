@@ -25,6 +25,8 @@ public class WSAD8dir : MonoBehaviour {
     public Inventory inventory;
 
 
+    // private CharacterSelection PlayersChoice;
+
     // Use this for initialization
     void Start () {
         chara = GameObject.FindGameObjectWithTag("Player");
@@ -68,6 +70,7 @@ public class WSAD8dir : MonoBehaviour {
             moving2 = false;
         }
         
+        //ktora postac zostala wybrana przez gracza
 
 
 
