@@ -7,20 +7,31 @@ public class CameraControl : MonoBehaviour
     private const float Y_ANGLE_MIN = 10.0f;    // minimalne nachylenie do podlogi
     private const float Y_ANGLE_MAX = 80.0f;    // maksymalne nachylenie do podlogi
 
+  
     public Transform lookAt;
     private Transform camTransform;
-    public float distance = 30.0f;
+    public float distance = 20.0f;
+    private const float DOWN_DISTANCE_MIN = 3;
+    private const float UP_DISTANCE_MAX = 40;
 
     private float currentX = 0.0f;
     private float currentY = 45.0f;
     private float sensitivityX = 8.0f;
     private float sensitivityY = 6.0f;
 
+    private string player;
+    GameObject Chara;
+    Object prefab;
 
 
     private void Start()
     {
-        lookAt = GameObject.FindGameObjectWithTag("Player").transform;
+        player = "asa";
+        player = PlayerPrefs.GetString("Character_Selected");
+        //chara = GameObject.FindGameObjectWithTag("Player");
+        Chara = GameObject.Find(player);
+        
+        lookAt = Chara.transform;
         camTransform = transform;
     }
 
@@ -47,7 +58,7 @@ public class CameraControl : MonoBehaviour
         }
 
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
-        
+        distance = Mathf.Clamp(distance, DOWN_DISTANCE_MIN, UP_DISTANCE_MAX);
     }
 
     private void LateUpdate()

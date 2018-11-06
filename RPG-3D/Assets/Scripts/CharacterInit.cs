@@ -32,7 +32,15 @@ public class CharacterInit : MonoBehaviour {
 
         Chara.tag = "Player";
         Followr.tag = "Follower";
-        Followr.SetActive(false);
+
+       // Followr.AddComponent<FollowerScript>();
+       // Followr.GetComponent<WSAD8dir>().enabled = false;
+
+       // Chara.AddComponent<WSAD8dir>();
+       // Chara.GetComponent<FollowerScript2>().enabled = false;
+
+
+         Followr.SetActive(false);
 
         Debug.Log("3:   gracz to: " + PlayerPrefs.GetString("Character_Selected") + ",  a follower to: " + PlayerPrefs.GetString("Character_Follower"));
     }

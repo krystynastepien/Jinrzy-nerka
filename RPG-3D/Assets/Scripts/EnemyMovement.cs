@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour {
 
-    Transform player;
+    Transform Player;
     StatsScript StatsScr;
     // Reference to the player's position.
    // EnemyHealth enemyHealth;        // Reference to this enemy's health.
@@ -15,11 +15,23 @@ public class EnemyMovement : MonoBehaviour {
 
     public Vector3 start_enemy_position;
     public Vector3 playerPosChanged;
+
+
+    private string player;
+    GameObject Chara;
+    Object prefab;
+
     void Awake()
     {
+        player = "asa";
+        player = PlayerPrefs.GetString("Character_Selected");
+        //chara = GameObject.FindGameObjectWithTag("Player");
+        Chara = GameObject.Find(player);
+        Player = Chara.transform;
+
         // Set up the references.
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        StatsScr = player.GetComponent<StatsScript>();
+       // player = GameObject.FindGameObjectWithTag("Player").transform;
+       // StatsScr = player.GetComponent<StatsScript>();
         //enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent<NavMeshAgent>();
 
@@ -38,21 +50,23 @@ public class EnemyMovement : MonoBehaviour {
         // If the enemy and the player have health left...
         // if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
 
-         playerPosChanged = player.transform.position + new Vector3(1,0,1);
+         playerPosChanged = Player.transform.position + new Vector3(1,0,1);
 
-        distance.x = player.transform.position.x - this.transform.position.x;
+        distance.x = Player.transform.position.x - this.transform.position.x;
         distance.x = Mathf.Abs(distance.x);
 
-        distance.z = player.transform.position.z - this.transform.position.z;
+        distance.z = Player.transform.position.z - this.transform.position.z;
         distance.z = Mathf.Abs(distance.z);
 
+        nav.SetDestination(Player.position);
 
+        /*
         if ( StatsScr.health > 0)
             {
             if (distance.x <= distCheck || distance.z <= distCheck)
             {
                 // ... set the destination of the nav mesh agent to the player.
-                nav.SetDestination(player.position);
+                nav.SetDestination(Player.position);
             }
             else if (distance.x > distCheck || distance.z > distCheck)
             {
@@ -66,6 +80,6 @@ public class EnemyMovement : MonoBehaviour {
         {
             // ... disable the nav mesh agent.
             nav.enabled = false;
-        }
-    }
+        } */
+    }  
 }
