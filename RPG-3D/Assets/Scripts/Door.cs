@@ -7,21 +7,25 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour {
 
     public GameObject[] drzwi;
-    private GameObject chara;
+    public GameObject[] skrzynia;
+    private GameObject chara, chest_hud;
     private bool touched;
-    private string drzwi_name;
+    private string drzwi_name, skrzynia_name;
     RaycastHit rhInfo;
 
 
     // Use this for initialization
     void Start () {
-
+        chest_hud = GameObject.Find("HUD_Chest");
         drzwi = GameObject.FindGameObjectsWithTag("Door");
         chara = GameObject.FindGameObjectWithTag("Player");
+        skrzynia = GameObject.FindGameObjectsWithTag("Skrzynia");
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -29,8 +33,13 @@ public class Door : MonoBehaviour {
             {
                 if(drzwi_name == "drzwi_test1" && rhInfo.collider.name == "drzwi_test1")
                 {
-                    
+                  
                     SceneManager.LoadSceneAsync("scene7room");
+                }
+                else if (rhInfo.collider.name == "Chest1")
+                {
+                    chest_hud.SetActive(true);
+                    Debug.Log("otwarto skrzynie Chest1");
                 }
             }
         }
@@ -64,6 +73,7 @@ public class Door : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+
             Debug.Log("drzwi out");
             touched = false;
         }

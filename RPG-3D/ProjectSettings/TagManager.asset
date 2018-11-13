@@ -13,6 +13,7 @@ TagManager:
   - ButtonH
   - Follower
   - ButtonStart
+  - Skrzynia
   layers:
   - Default
   - TransparentFX
