@@ -5,19 +5,19 @@ using UnityEngine;
 public class BulletsPack : MonoBehaviour, IInventoryItem
 {
 
-    public string Name   //interface field, zwraca nazwe obiektu
+    public string Name
     {
-        get { return "Bullets Box"; }   
+        get { return "Bullets Box"; }
     }
 
     public Sprite _Image = null;
 
-    public Sprite Image     //interface field
-    { 
+    public Sprite Image
+    {
         get { return _Image; }
     }
 
-    public void OnPickup()   // interface field
+    public void OnPickup()
     {
         Debug.Log("bullets picked and deactivated");
         gameObject.SetActive(false);

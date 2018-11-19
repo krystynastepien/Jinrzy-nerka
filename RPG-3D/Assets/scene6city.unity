@@ -355,8 +355,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.467457, y: 1, z: 5.343071}
-  m_Center: {x: -0.023480108, y: 0, z: 0.14147738}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &42696298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -418,8 +418,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 42696296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -459.05, y: -2.93, z: -85.21}
-  m_LocalScale: {x: 2.1555865, y: 0.82853, z: 0.82853}
+  m_LocalPosition: {x: -460.98, y: -2.93, z: -85.21}
+  m_LocalScale: {x: 2.6017, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
@@ -1159,7 +1159,6 @@ GameObject:
   - component: {fileID: 230082531}
   - component: {fileID: 230082530}
   - component: {fileID: 230082534}
-  - component: {fileID: 230082535}
   m_Layer: 0
   m_Name: drzwi_test2
   m_TagString: Door
@@ -1246,19 +1245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drzwi: []
-  skrzynia: []
---- !u!65 &230082535
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 230082529}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 11.660063}
-  m_Center: {x: -0.00000088196975, y: 0, z: -5.330026}
 --- !u!1 &234893464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,17 +3570,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.559741, z: 1}
   m_Center: {x: 0, y: 0.8285718, z: 0}
---- !u!114 &601786881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 601786869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51bdb0d1f37b47c44b67de9c6fae60e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &615417362
 GameObject:
   m_ObjectHideFlags: 0
@@ -3991,8 +3966,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.6889954, y: 1, z: 3.4665222}
-  m_Center: {x: 0.0030975342, y: 0, z: -0.024642944}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &675779183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4421,7 +4396,6 @@ GameObject:
   - component: {fileID: 826670941}
   - component: {fileID: 826670940}
   - component: {fileID: 826670939}
-  - component: {fileID: 826670944}
   m_Layer: 0
   m_Name: drzwi_test1
   m_TagString: Door
@@ -4441,7 +4415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drzwi: []
-  skrzynia: []
 --- !u!65 &826670940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4509,18 +4482,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -58.832005, z: 0}
---- !u!65 &826670944
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826670938}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 6.1049137}
-  m_Center: {x: -0.0000004701733, y: 0, z: 2.5524619}
 --- !u!1 &849934954
 GameObject:
   m_ObjectHideFlags: 0
@@ -8891,7 +8852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drzwi: []
-  skrzynia: []
 --- !u!114 &1871467648
 MonoBehaviour:
   m_ObjectHideFlags: 0

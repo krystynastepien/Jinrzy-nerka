@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class FirstAid : MonoBehaviour, IInventoryItem {
 
-    public string Name   //interface field
+    public string Name
     {
         get { return "FirstAidKit"; }
     }
 
     public Sprite _Image = null;
 
-    public Sprite Image   //interface field
+    public Sprite Image
     {
         get { return _Image; }
     }
 
-    public void OnPickup()   //interface field
+    public void OnPickup()
     {
         Debug.Log("Kit picked and deactivated");
         gameObject.SetActive(false);
     }
 
-    //--------------------------------------------
+    
 
     public float aid = 20;
     private StatsScript PlayerStats;

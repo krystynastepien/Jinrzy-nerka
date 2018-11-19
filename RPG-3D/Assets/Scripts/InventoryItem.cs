@@ -4,26 +4,23 @@ using UnityEngine;
 using System;
 
 
-public interface IInventoryItem   //interface, zaczyna sie od I zazwyczaj
+public interface IInventoryItem
 {
-    string Name { get; }   //read only
+    string Name { get; }
 
-    Sprite Image { get; }  //read only
+    Sprite Image { get; }
 
     void OnPickup();
 }
 
 public class InventoryEventArgs : EventArgs
 {
-
-    public IInventoryItem Item; // obiekt z interface
-
     public InventoryEventArgs(IInventoryItem item)
     {
         Item = item;
     }
 
-    
+    public IInventoryItem Item; 
 
 }
 
