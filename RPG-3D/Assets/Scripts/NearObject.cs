@@ -74,7 +74,7 @@ public class NearObject : MonoBehaviour
         {
             case "Door":
                 {
-                    Debug.Log("postac odeszla od drzwi");
+                    Debug.Log("postac odeszla od drzwi hlep ");
                     obiekt = null;
                     break;
                 }
