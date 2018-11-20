@@ -10,26 +10,45 @@ public class Inventory : MonoBehaviour {
 
     private List<IInventoryItem> mItems = new List<IInventoryItem>();    // lista obiektow z inventry interface (name, sprite, onPickup() )
 
+    //metoda ktora dodaje item do listy mItems
     public event EventHandler<InventoryEventArgs> ItemAdded;   // InvenotryItem.cs -> class InventoryEventArgs  public InventoryEventArgs(IInventoryItem item)
-                                                                //{ Item = item;}    event
+                                                               //{ Item = item;}    event
+    public event EventHandler<InventoryEventArgs> ItemRemoved;   //event
+
+    public event EventHandler<InventoryEventArgs> ItemUsed;   //event
+
+
+
+
+
+    internal void UseItem(IInventoryItem item)
+    {
+        if (ItemUsed != null)
+        {
+            ItemUsed(this, new InventoryEventArgs(item));   //itemUsed jest puszczony
+        }
+    }
+
+
+
 
 
     public void AddItem(IInventoryItem item) //funckja dodaje obiekt z interface
     {
-        if(mItems.Count < SLOTS) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory)
+        if(mItems.Count < SLOTS) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory), wtedy dodajemy item
         {
-            Debug.Log("there are available slots. sSlots taken: " + mItems.Count);
+           // Debug.Log("there are available slots. sSlots taken: " + mItems.Count);
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
             if (collider.enabled)
             {
-                Debug.Log("collider enabled, disabling it");
+              //  Debug.Log("collider enabled, disabling it");
                 collider.enabled = false;
                 mItems.Add(item); //dodano do listy inventory
                 item.OnPickup();   // w zaleznosci jaką funkcje OnPickup ma konkretny item
 
                 if(ItemAdded != null)  //event
                 {
-                    Debug.Log("adds item");
+                   // Debug.Log("adds item");
                     ItemAdded(this, new InventoryEventArgs(item));
                 }
             }
@@ -38,13 +57,48 @@ public class Inventory : MonoBehaviour {
     }
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void AddItemFromChest(IInventoryItem item) //funckja dodaje obiekt z interface
+    {
+        if (mItems.Count < SLOTS) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory), wtedy dodajemy item
+        {
+                mItems.Add(item); //dodano do listy inventory
+                  
+
+                if (ItemAdded != null)  //event
+                {
+                    // Debug.Log("adds item");
+                    ItemAdded(this, new InventoryEventArgs(item));
+                }
+            
+        }
+
+    }
+
+
+
+
+
+    public void RemoveItem(IInventoryItem item) //funckja dodaje obiekt z interface
+    {
+        if (mItems.Contains(item)) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory), wtedy dodajemy item
+        {
+            mItems.Remove(item);  // usuniety z listy obiektow
+
+            item.OnDrop(); //onDrop z danego itemu
+
+            Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
+
+            if(collider != null)
+            {
+                collider.enabled = true;  // reaktywowanie collidera
+            }
+
+            if(ItemRemoved != null)
+            {
+                ItemRemoved(this, new InventoryEventArgs(item));   //itemRemoved jest puszczony
+            }
+        }
+
+    }
+
 }

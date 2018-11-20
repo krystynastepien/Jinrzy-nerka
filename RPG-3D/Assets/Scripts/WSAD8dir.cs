@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class WSAD8dir : MonoBehaviour {
 
     public Inventory inventory;
 
+    private StatsScript PlayerStats;
 
     // private CharacterSelection PlayersChoice;
 
@@ -34,10 +36,28 @@ public class WSAD8dir : MonoBehaviour {
         lastPos = transform.position;
         SlopeScr = chara.GetComponent<SlopesScript>();
         anim = GetComponent<Animator>();
+        inventory.ItemUsed += Inventory_ItemUsed;
+        PlayerStats = chara.GetComponent<StatsScript>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Inventory_ItemUsed(object sender, InventoryEventArgs e)
+    {
+        IInventoryItem item = e.Item;
+        if (e.Item.Name=="FirstAidKit")
+        {
+            if (PlayerStats.health < 1000)
+            {
+                PlayerStats.health = PlayerStats.health + 100;
+                if (PlayerStats.health > 1000)
+                {
+                    PlayerStats.health = 1000;
+                }
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         moving2 = false;
         /*if (Round(lastPos) != Round(transform.position))
         {
@@ -113,13 +133,17 @@ public class WSAD8dir : MonoBehaviour {
     }
 
 
+    /// <summary>
+    ///  zbieranie przedmiotów na ktore sie wejdzie
+    /// </summary>
     private void OnCollisionEnter(Collision collision)
     {
-        IInventoryItem item = collision.collider.GetComponent<IInventoryItem>();
+        IInventoryItem item = collision.collider.GetComponent<IInventoryItem>();  //zprawdzamy czy przedmiot ma IInventoryItem component
+                                                // jesli tak to dodajemy ten item do inventory
         if (item != null)
         {
             inventory.AddItem(item);
-            Debug.Log("hit collider");
+         //   Debug.Log("hit collider");
         }
     }
 

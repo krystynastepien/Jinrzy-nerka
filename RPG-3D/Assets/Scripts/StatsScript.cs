@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatsScript : MonoBehaviour {
 
-    public float health = 1000;
+    public float health = 600;
 
 	// Use this for initialization
 	void Start () {

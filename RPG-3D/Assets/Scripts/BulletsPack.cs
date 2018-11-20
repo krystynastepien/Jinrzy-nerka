@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletsPack : MonoBehaviour, IInventoryItem
+public class BulletsPack : InventoryItemBase
 {
 
-    public string Name   //interface field, zwraca nazwe obiektu
+    public override string Name   //interface field, zwraca nazwe obiektu
     {
         get { return "Bullets Box"; }   
     }
-
+    /*
     public Sprite _Image = null;
 
     public Sprite Image     //interface field
@@ -23,4 +23,17 @@ public class BulletsPack : MonoBehaviour, IInventoryItem
         gameObject.SetActive(false);
     }
 
+    public virtual OnDrop()
+    {
+        RaycastHit hit = new RaycastHit();
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            gameObject.SetActive(true);
+            gameObject.transform.position = hit.point;
+        }
+    }
+    */
 }
