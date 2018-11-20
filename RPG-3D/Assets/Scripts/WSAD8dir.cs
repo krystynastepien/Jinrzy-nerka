@@ -48,6 +48,7 @@ public class WSAD8dir : MonoBehaviour {
             if (PlayerStats.health < 1000)
             {
                 PlayerStats.health = PlayerStats.health + 100;
+                Debug.Log(item.counter);
                 if (PlayerStats.health > 1000)
                 {
                     PlayerStats.health = 1000;
@@ -143,6 +144,7 @@ public class WSAD8dir : MonoBehaviour {
         if (item != null)
         {
             inventory.AddItem(item);
+            item.counter += 1;
          //   Debug.Log("hit collider");
         }
     }

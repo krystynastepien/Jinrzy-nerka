@@ -25,11 +25,14 @@ public class Inventory : MonoBehaviour {
     {
         if (ItemUsed != null)
         {
+            item.counter -= 1;
             ItemUsed(this, new InventoryEventArgs(item));   //itemUsed jest puszczony
+            RemoveItem(item);
         }
+       
+        
+       
     }
-
-
 
 
 
@@ -43,14 +46,15 @@ public class Inventory : MonoBehaviour {
             {
               //  Debug.Log("collider enabled, disabling it");
                 collider.enabled = false;
-                mItems.Add(item); //dodano do listy inventory
-                item.OnPickup();   // w zaleznosci jaką funkcje OnPickup ma konkretny item
+               
+                    mItems.Add(item); //dodano do listy inventory
+                item.counter += 1;
+                    item.OnPickup();   // w zaleznosci jaką funkcje OnPickup ma konkretny item
 
-                if(ItemAdded != null)  //event
-                {
-                   // Debug.Log("adds item");
-                    ItemAdded(this, new InventoryEventArgs(item));
-                }
+                    if (ItemAdded != null)  //event
+                    {
+                        ItemAdded(this, new InventoryEventArgs(item));
+                    }
             }
         }
 
@@ -62,11 +66,10 @@ public class Inventory : MonoBehaviour {
         if (mItems.Count < SLOTS) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory), wtedy dodajemy item
         {
                 mItems.Add(item); //dodano do listy inventory
-                  
+            item.counter += 1;
 
-                if (ItemAdded != null)  //event
+            if (ItemAdded != null)  //event
                 {
-                    // Debug.Log("adds item");
                     ItemAdded(this, new InventoryEventArgs(item));
                 }
             
@@ -85,6 +88,8 @@ public class Inventory : MonoBehaviour {
             mItems.Remove(item);  // usuniety z listy obiektow
 
             item.OnDrop(); //onDrop z danego itemu
+            item.counter -= 1;
+
 
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
 

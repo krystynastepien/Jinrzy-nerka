@@ -9,14 +9,14 @@ public class FirstAid : InventoryItemBase {    //implementuje IInventoryItem wie
         get { return "FirstAidKit"; }
     }
 
-    /*
-    public Sprite _Image = null;
+    
+    //public Sprite _Image = null;
 
-    public Sprite Image   //interface field
+    public override Sprite Image   //interface field
     {
         get { return _Image; }
     }
- 
+ /*
 
 
 

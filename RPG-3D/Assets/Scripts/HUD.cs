@@ -33,17 +33,27 @@ public class HUD : MonoBehaviour {
             ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
 
 
+           
+            
+        
+                
+                
+                    if (!image.enabled)
+                    {
+                        //  Debug.Log("image enabled");   //jesli slot jest pusty to jes;i damy enabled to bd biale tlo. wiec jak pusty to musi byc disabled (not active)
+
+                        image.enabled = true;
+                        image.sprite = e.Item.Image;
+                        itemDragHandler.Item = e.Item;
+                       
+
+
+                        break;
+                    }
+                
+
             //we found empty slot
-            if (!image.enabled)
-            {
-              //  Debug.Log("image enabled");   //jesli slot jest pusty to jes;i damy enabled to bd biale tlo. wiec jak pusty to musi byc disabled (not active)
-
-                image.enabled = true;
-                image.sprite = e.Item.Image;
-                itemDragHandler.Item = e.Item;
-
-                break;
-            }
+            
         }
     }
 
@@ -64,21 +74,29 @@ public class HUD : MonoBehaviour {
             Image image = imageTransform.GetComponent<Image>(); //Assigns the transform of the first child of the Game Object this script is attached to.
                                                                 //Debug.Log(slot.GetChild(0).GetChild(0).transform.name);
 
-            ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
-
-
+          
+                               
+                ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
             //we found item in the inventory/ UI
-            if (itemDragHandler.Item.Equals(e.Item))
-            {
-              //  Debug.Log("image disabled");   
+            
+                if (itemDragHandler.Item.Equals(e.Item))
+                {
+                    //  Debug.Log("image disabled");   
 
-                image.enabled = false;
-                image.sprite = null;
-                itemDragHandler.Item = null;
+                    image.enabled = false;
+                    image.sprite = null;
+                    itemDragHandler.Item = null;
+                   
 
 
-                break;
-            }
+                    break;
+                }
+            
+
+
+
+                
+            
         }
     }
 

@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class InventoryItemBase : MonoBehaviour, IInventoryItem {
     private string m_Name;
+    private Sprite m_Image;
     public virtual string Name
     {
         get
         {
             return "_base item_";
         }
-        set
-        {
-            m_Name = value;
-        }
+        
     }
 
     public Sprite _Image;
 
-    public Sprite Image
+    public virtual Sprite Image
     {
         get { return _Image; }
+       
     }
 
+    public int c = 0;
+    public int counter
+    {
+        get
+        {
+            return c;
+        }
+
+        set
+        {
+            c = value;
+        }
+    }
 
     public virtual void OnDrop()
     {
@@ -35,15 +47,13 @@ public class InventoryItemBase : MonoBehaviour, IInventoryItem {
             gameObject.SetActive(true);
             gameObject.transform.position = hit.point;
         }
+        //counter -= 1;
     }
 
     public virtual void OnPickup()
     {
         gameObject.SetActive(false);
+        //counter += 1;
     }
 
-    public void OnInvClick()
-    {
-        //throw new System.NotImplementedException();
-    }
 }

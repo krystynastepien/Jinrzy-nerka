@@ -6,13 +6,5 @@ public class StatsScript : MonoBehaviour {
 
     public float health = 600;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
