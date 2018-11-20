@@ -43,18 +43,31 @@ public class WSAD8dir : MonoBehaviour {
     private void Inventory_ItemUsed(object sender, InventoryEventArgs e)
     {
         IInventoryItem item = e.Item;
-        if (e.Item.Name=="FirstAidKit")
+        switch(e.Item.Name)
         {
-            if (PlayerStats.health < 1000)
-            {
-                PlayerStats.health = PlayerStats.health + 100;
-                Debug.Log(item.counter);
-                if (PlayerStats.health > 1000)
+            case "FirstAidKit":
                 {
-                    PlayerStats.health = 1000;
+                    Debug.Log("uzyto " + e.Item.Name);
+                    if (PlayerStats.health < 1000)
+                    {
+                        PlayerStats.health = PlayerStats.health + 100;
+                        Debug.Log("zwiekszono zdrowie ");
+                        Debug.Log(item.counter);
+                        if (PlayerStats.health > 1000)
+                        {
+                            PlayerStats.health = 1000;
+                        }
+                    }
+                    break;
                 }
-            }
+            case "Bullets Box":
+                {
+                    Debug.Log("uzyto " + e.Item.Name);
+
+                    break;
+                }
         }
+       
     }
 
     // Update is called once per frame
@@ -144,8 +157,7 @@ public class WSAD8dir : MonoBehaviour {
         if (item != null)
         {
             inventory.AddItem(item);
-            item.counter += 1;
-         //   Debug.Log("hit collider");
+                    //   Debug.Log("hit collider");
         }
     }
 

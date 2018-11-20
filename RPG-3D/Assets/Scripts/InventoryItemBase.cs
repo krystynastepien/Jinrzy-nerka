@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryItemBase : MonoBehaviour, IInventoryItem {
     private string m_Name;
     private Sprite m_Image;
+    
     public virtual string Name
     {
         get

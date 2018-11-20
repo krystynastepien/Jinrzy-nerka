@@ -36,7 +36,7 @@ public class InventoryUse : MonoBehaviour {
             
             _Inventory.UseItem(item);           
         }
-        else if(inv_name == "Inventory_Chest") // sprawdza w jakim inventory kliknieto: chest
+       /* else if(inv_name == "Inventory_Chest") // sprawdza w jakim inventory kliknieto: chest
         {
             Transform imageTransform = inv.GetChild(0).GetChild(0).GetChild(0);
             Image image = imageTransform.gameObject.GetComponent<Image>();
@@ -55,9 +55,7 @@ public class InventoryUse : MonoBehaviour {
                     }
             }
 
-            
-
-        }       
+        }      */ 
     }
 }
 

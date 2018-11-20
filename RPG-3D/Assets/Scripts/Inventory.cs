@@ -25,7 +25,6 @@ public class Inventory : MonoBehaviour {
     {
         if (ItemUsed != null)
         {
-            item.counter -= 1;
             ItemUsed(this, new InventoryEventArgs(item));   //itemUsed jest puszczony
             RemoveItem(item);
         }
@@ -38,25 +37,29 @@ public class Inventory : MonoBehaviour {
 
     public void AddItem(IInventoryItem item) //funckja dodaje obiekt z interface
     {
-        if(mItems.Count < SLOTS) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory), wtedy dodajemy item
-        {
-           // Debug.Log("there are available slots. sSlots taken: " + mItems.Count);
-            Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
-            if (collider.enabled)
+      
+        
+            if (mItems.Count < SLOTS) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory), wtedy dodajemy item
             {
-              //  Debug.Log("collider enabled, disabling it");
-                collider.enabled = false;
-               
+                // Debug.Log("there are available slots. sSlots taken: " + mItems.Count);
+                item.counter = 1;
+                Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
+                if (collider.enabled)
+                {
+                    //  Debug.Log("collider enabled, disabling it");
+                    collider.enabled = false;
+
                     mItems.Add(item); //dodano do listy inventory
-                item.counter += 1;
+
                     item.OnPickup();   // w zaleznosci jaką funkcje OnPickup ma konkretny item
 
                     if (ItemAdded != null)  //event
                     {
                         ItemAdded(this, new InventoryEventArgs(item));
                     }
+                }
             }
-        }
+        
 
     }
 
@@ -66,7 +69,7 @@ public class Inventory : MonoBehaviour {
         if (mItems.Count < SLOTS) // jezeli w tymczasowym inventory jest wystarczajaca ilosc miejsca (tzn mItems to sa te w inventory), wtedy dodajemy item
         {
                 mItems.Add(item); //dodano do listy inventory
-            item.counter += 1;
+            
 
             if (ItemAdded != null)  //event
                 {
@@ -88,16 +91,15 @@ public class Inventory : MonoBehaviour {
             mItems.Remove(item);  // usuniety z listy obiektow
 
             item.OnDrop(); //onDrop z danego itemu
-            item.counter -= 1;
-
 
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
 
             if(collider != null)
             {
-                collider.enabled = true;  // reaktywowanie collidera
+                //collider.enabled = true;  // reaktywowanie collidera
+                collider.gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
-
+            
             if(ItemRemoved != null)
             {
                 ItemRemoved(this, new InventoryEventArgs(item));   //itemRemoved jest puszczony
